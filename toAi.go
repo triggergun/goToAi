@@ -50,11 +50,31 @@ type Usage struct {
 
 // ai请求
 // AiRequest 首字母大写表示公开方法
+
 func AiRequest() {
 	fmt.Println("=== 使用标准net/http库访问DeepSeek API ===")
 	fmt.Println()
 
 	response, err := callDeepSeekWithHTTP("你好")
+	if err != nil {
+		fmt.Printf("请求失败: %v\n", err)
+		return
+	}
+
+	fmt.Println("用户: 你好")
+	fmt.Println("DeepSeek:", response)
+	fmt.Println()
+	fmt.Println("=== API使用统计 ===")
+	fmt.Printf("模型: %s\n", modelName)
+}
+
+// AiRequestWithWord 传递一个单词。
+
+func AiRequestWithWord(word string) {
+	fmt.Println("=== 使用标准net/http库访问DeepSeek API ===")
+	fmt.Println()
+
+	response, err := callDeepSeekWithHTTP("解析单词" + word + "需要给出这个单词的常用意思、不同领域存在的意思、发音音标、其它形式怎么变换记忆、简单常用的案例句子方便记忆。")
 	if err != nil {
 		fmt.Printf("请求失败: %v\n", err)
 		return
@@ -79,6 +99,7 @@ func callDeepSeekWithHTTP(message string) (string, error) {
 
 	// 将请求体序列化为JSON
 	jsonData, err := json.Marshal(requestBody)
+	fmt.Println("requestBody:" + string(jsonData))
 	if err != nil {
 		return "", fmt.Errorf("JSON序列化失败: %w", err)
 	}
