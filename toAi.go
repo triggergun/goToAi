@@ -49,7 +49,8 @@ type Usage struct {
 }
 
 // ai请求
-func aiRequest() {
+// AiRequest 首字母大写表示公开方法
+func AiRequest() {
 	fmt.Println("=== 使用标准net/http库访问DeepSeek API ===")
 	fmt.Println()
 
