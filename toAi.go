@@ -9,6 +9,7 @@ import (
 )
 
 // DeepSeek API配置
+
 const (
 	apiKey    = "sk-7e3ff6b8f5704484921554b9e9b22f73"
 	modelName = "deepseek-v4-flash"
@@ -16,6 +17,7 @@ const (
 )
 
 // 请求体结构
+
 type RequestBody struct {
 	Model    string    `json:"model"`
 	Messages []Message `json:"messages"`
@@ -27,6 +29,7 @@ type Message struct {
 }
 
 // 响应体结构
+
 type ResponseBody struct {
 	ID      string   `json:"id"`
 	Object  string   `json:"object"`
@@ -88,6 +91,7 @@ func AiRequestWithWord(word string) {
 }
 
 // 使用标准net/http库调用DeepSeek API
+
 func callDeepSeekWithHTTP(message string) (string, error) {
 	// 构建请求体
 	requestBody := RequestBody{
