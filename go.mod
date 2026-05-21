@@ -1,3 +1,3 @@
-module goToAi
+module github.com/triggergun/goToAi
 
 
