@@ -77,7 +77,7 @@ func AiRequest() {
 func AiRequestWithWord(word string) (string, error) {
 	slog.Info("进入模块 toAi", "function", "=== 使用标准net/http库访问DeepSeek API ===")
 
-	response, err := callDeepSeekWithHTTP("解析单词" + word + "需要给出这个单词的常用意思、不同领域存在的意思、发音音标、其它形式怎么变换记忆、简单常用的案例句子方便记忆。")
+	response, err := callDeepSeekWithHTTP("解析单词" + word + "需要给出这个单词的常用意思、不同领域存在的意思、发音音标、其它形式怎么变换记忆、简单常用的案例句子方便记忆。按照markdown文本格式输出。")
 	if err == nil {
 		slog.Info("进入模块 toAi", "function", "DoSomething")
 		slog.Info("进入模块 toAi", "function", "DeepSeek response:"+response)
